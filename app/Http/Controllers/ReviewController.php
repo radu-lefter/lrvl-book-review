@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware('throttle:reviews')->only(['store']);
+    }
     public function index()
     {
         //
